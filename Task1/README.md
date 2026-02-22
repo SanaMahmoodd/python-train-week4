@@ -1,6 +1,6 @@
 # Python Training - Week 4
 
-## Task 1: Advanced Python OOP Features 🚀
+## Task 1: Advanced Python OOP Features
 
 ### Objective
 

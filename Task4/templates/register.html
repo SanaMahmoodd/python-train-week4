@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Register Student</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="topbar">
+        <div class="brand">
+          <h1>Register</h1>
+          <p>Add a new student</p>
+        </div>
+
+        <div class="nav">
+          <a href="/">Home</a>
+          <a class="active" href="/register">Register</a>
+          <a href="/students">Students</a>
+        </div>
+      </div>
+
+      <div class="card">
+        {% if errors and errors|length > 0 %}
+          <div class="alert">
+            <b>Please fix the following:</b>
+            <ul>
+              {% for e in errors %}
+                <li>{{ e }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        <form class="form" method="POST" action="/register">
+          <div class="field">
+            <label>Name</label>
+            <input type="text" name="name" placeholder="e.g., Sana" value="{{ old.name }}">
+          </div>
+
+          <div class="field">
+            <label>Student ID</label>
+            <input type="text" name="student_id" placeholder="e.g., S1001" value="{{ old.student_id }}">
+          </div>
+
+          <div class="actions">
+            <button class="btn" type="submit">Register</button>
+            <a class="btn secondary" href="/students" style="text-decoration:none;">Go to list</a>
+          </div>
+        </form>
+      </div>
+
+      <div class="footer">Tip: Student ID must be unique.</div>
+    </div>
+  </body>
+</html>

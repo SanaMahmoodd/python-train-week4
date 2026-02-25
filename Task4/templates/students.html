@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Student List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="topbar">
+        <div class="brand">
+          <h1>Students</h1>
+          <p>All registered students</p>
+        </div>
+
+        <div class="nav">
+          <a href="/">Home</a>
+          <a href="/register">Register</a>
+          <a class="active" href="/students">Students</a>
+        </div>
+      </div>
+
+      <div class="card">
+        {% if students|length == 0 %}
+          <p class="subtle">No students registered yet.</p>
+          <div class="actions">
+            <a class="btn" href="/register" style="text-decoration:none;">Register first student</a>
+          </div>
+        {% else %}
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Student ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for s in students %}
+                <tr>
+                  <td>{{ loop.index }}</td>
+                  <td>{{ s.name }}</td>
+                  <td>{{ s.student_id }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% endif %}
+      </div>
+
+      <div class="footer">Total students: {{ students|length }}</div>
+    </div>
+  </body>
+</html>
